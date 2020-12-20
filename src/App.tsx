@@ -1,16 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { AppBar, Button, Drawer, Grid, IconButton, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography } from '@material-ui/core';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { AppBar, Button, Grid, IconButton, Toolbar, Typography } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
-import InboxIcon from '@material-ui/icons/Inbox';
-import SaveIcon from '@material-ui/icons/Save';
 import Login from './Login';
 import Home from './Home';
+import Sidebar from './Sidebar';
 
 function App() {
   const theme = useTheme();
-  const bannerBackgroundColor = theme.palette.success.main;
+
   return (
     <Router>
       <Grid container direction="column" justify="center" alignItems="center" style={{ height: "100vh" }}>
@@ -27,16 +26,7 @@ function App() {
         </Grid>
         <Grid direction="row" container style={{ flex: 1 }}>
           <Grid item>
-            <List>
-              <ListItem button key="Home">
-                <ListItemIcon><InboxIcon /></ListItemIcon>
-                <ListItemText><Link to="/">Home</Link></ListItemText>
-              </ListItem>
-              <ListItem button key="Login">
-                <ListItemIcon><SaveIcon /></ListItemIcon>
-                <ListItemText><Link to="/login">Login</Link></ListItemText>
-              </ListItem>
-            </List>
+            <Sidebar />
           </Grid>
           <Grid item style={{ flex: 1 }}>
             <Switch>
